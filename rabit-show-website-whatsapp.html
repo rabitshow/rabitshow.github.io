@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rabit Show | Modern Online Shop</title>
+<meta name="description" content="Rabit Show — Cosmetics, Electronics, Fashion and more.">
+<style>
+:root{--bg:#080d18;--panel:#0d1422;--panel2:#111a2b;--pink:#ff3f8f;--pink2:#ff6aab;--white:#f8f9ff;--muted:#aeb7c9;--line:#263149}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:Arial,"Noto Sans Bengali",sans-serif;background:#f5f7fb;color:#111827}button,input,select,textarea{font:inherit}
+a{text-decoration:none;color:inherit}.top{background:#070b13;color:#cbd3e2;text-align:center;padding:7px;font-size:11px}
+.header{background:var(--bg);color:#fff;position:sticky;top:0;z-index:50;border-bottom:1px solid #1c2638}
+.nav{max-width:1240px;margin:auto;padding:13px 22px;display:flex;align-items:center;gap:25px}
+.logo{display:flex;align-items:center;gap:9px;font-size:29px;font-weight:900;letter-spacing:-1.5px;min-width:245px}.logo span{color:var(--pink)}
+.logo-rabbit{font-size:55px;line-height:1;filter:drop-shadow(0 4px 8px #0008)}
+.menu{display:flex;gap:18px;flex:1;align-items:center}.menu a{padding:10px 13px;border-radius:11px;color:#dce2ed;font-size:13px;font-weight:700}.menu a:hover{background:#172238;color:#fff}
+.search{position:relative;flex:1;max-width:430px}.search input{width:100%;background:#182237;border:1px solid #293650;color:#fff;padding:12px 43px 12px 16px;border-radius:25px;outline:none}.search span{position:absolute;right:15px;top:11px}
+.actions{display:flex;gap:8px}.iconbtn{width:42px;height:42px;border:1px solid #2a3650;border-radius:12px;background:#101827;color:#fff;position:relative}
+.cart-badge{position:absolute;right:-4px;top:-5px;background:var(--pink);color:#fff;font-size:10px;min-width:18px;height:18px;border-radius:10px;display:grid;place-items:center}
+.hero{max-width:none;margin:0;padding:58px max(35px,calc((100% - 1240px)/2));min-height:420px;background:radial-gradient(circle at 75% 45%,#23304b 0,#111a2a 34%,#080d18 75%);color:#fff;display:flex;align-items:center;justify-content:space-between;overflow:hidden;position:relative}
+.hero:after{content:"";position:absolute;width:430px;height:430px;border-radius:50%;right:6%;top:-90px;background:radial-gradient(circle,#ff4a9822,transparent 65%)}
+.hero h1{font-size:clamp(48px,7vw,82px);line-height:.92;margin:15px 0;letter-spacing:-3px}.hero h1 span{color:var(--pink)}
+.hero p{max-width:570px;color:#b9c2d2;line-height:1.75;font-size:15px}.badge{display:inline-block;padding:8px 13px;border:1px solid #ff4f9638;background:#ff3f8f12;color:#ff80b5;border-radius:30px;font-size:11px;font-weight:800}
+.btn{display:inline-flex;align-items:center;gap:8px;margin-top:23px;padding:13px 21px;border-radius:12px;background:var(--pink);color:#fff;font-weight:900;box-shadow:0 9px 25px #ff3f8f35}.btn:hover{background:var(--pink2)}
+.hero-art{font-size:150px;z-index:1;filter:drop-shadow(0 25px 30px #0009);transform:rotate(-5deg);margin-right:7%}
+.section{max-width:1240px;margin:38px auto;padding:0 22px}.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:18px}.head h2{font-size:27px}.muted{color:var(--muted);font-size:13px}
+.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.cat{background:#fff;border:1px solid #e7eaf0;border-radius:17px;padding:21px;text-align:center;font-weight:800;transition:.2s}.cat:hover{transform:translateY(-4px);box-shadow:0 12px 28px #0000000c}.cat div{font-size:37px;margin-bottom:9px}
+#shop .search{max-width:none}.toolbar{display:flex;gap:10px;margin-bottom:18px}.toolbar .search{flex:1}.toolbar .search input{background:#fff;color:#111;border-color:#e1e4eb;border-radius:12px}.toolbar .search span{color:#777}.filter{padding:12px 15px;background:#fff;border:1px solid #e1e4eb;border-radius:12px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}.card{background:#fff;border:1px solid #e8eaf0;border-radius:17px;overflow:hidden;position:relative;box-shadow:0 6px 20px #00000005}.pic{height:190px;background:linear-gradient(135deg,#edf0f6,#fff);display:grid;place-items:center;font-size:68px}.fav{position:absolute;right:12px;top:12px;width:34px;height:34px;border-radius:50%;background:#fff;box-shadow:0 4px 15px #0001}.info{padding:15px}.tag{font-size:10px;color:var(--pink);font-weight:900}.name{font-weight:800;margin:7px 0 4px}.rating{font-size:12px;margin-bottom:7px}.price{font-size:19px;font-weight:900}.old{text-decoration:line-through;color:#999;font-size:12px;margin-left:5px;font-weight:500}.add{width:100%;margin-top:12px;padding:11px;border-radius:10px;background:#111827;color:#fff;font-weight:800}.add:hover{background:var(--pink)}
+.deal{display:flex;justify-content:space-between;align-items:center;gap:20px;background:linear-gradient(120deg,#151d31,#0d1422);color:#fff;border:1px solid #263149;border-radius:22px;padding:30px}.deal h2{font-size:28px;margin:8px 0}.deal .btn{margin-top:0}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.feature{background:#fff;border:1px solid #e8eaf0;padding:20px;border-radius:17px}.feature b{display:block;margin:8px 0 5px}.feature span{font-size:12px;color:#777}
+.news{background:#101827;color:#fff;border-radius:22px;padding:30px;display:flex;align-items:center;justify-content:space-between;gap:20px}.news input{padding:13px;border-radius:10px;border:0;width:250px}.news button{padding:13px 17px;border-radius:10px;background:var(--pink);color:#fff;font-weight:800}
+.footer{margin-top:55px;background:#080d18;color:#fff;padding:38px 20px}.footer-in{max-width:1180px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px}.footer h3{margin-bottom:12px}.footer p,.footer a{color:#9ea8ba;font-size:13px;line-height:1.9;display:block}.copy{max-width:1180px;margin:28px auto 0;border-top:1px solid #202a3b;padding-top:18px;color:#6f7889;font-size:12px}
+.toast{position:fixed;bottom:20px;right:20px;background:#111827;color:#fff;padding:13px 17px;border-radius:12px;opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s;z-index:100}.toast.show{opacity:1;transform:none}
+.modal{position:fixed;inset:0;background:#000b;display:none;place-items:center;z-index:90;padding:20px}.modal.open{display:grid}.modalbox{background:#fff;border-radius:20px;max-width:500px;width:100%;padding:25px;max-height:90vh;overflow:auto}.modalbox h2{margin-bottom:15px}.close{float:right;background:#eee;width:32px;height:32px;border-radius:50%}.modalbox input,.modalbox textarea{width:100%;margin:7px 0;padding:12px;border:1px solid #e1e4eb;border-radius:10px}.modalbox .full{width:100%;padding:13px;background:var(--pink);color:#fff;border-radius:10px;font-weight:800;margin-top:8px}
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:80;display:flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 16px;border-radius:30px;box-shadow:0 8px 24px #0003;font-weight:800;font-size:13px}.wa-float:hover{transform:translateY(-3px)}
+.entry-notice{position:fixed;inset:0;background:#000b;display:grid;place-items:center;padding:18px;z-index:200}.entry-card{width:min(500px,100%);background:#fff;border-radius:22px;padding:28px;text-align:center;box-shadow:0 20px 60px #0008}.entry-icon{font-size:45px;margin-bottom:8px}.entry-card h2{font-size:24px;margin-bottom:10px}.entry-card p{color:#666;line-height:1.75;font-size:14px}.entry-close{margin-top:18px;background:var(--pink);color:#fff;padding:12px 22px;border-radius:11px;font-weight:800}
+@media(max-width:950px){.logo{min-width:auto}.menu{display:none}.nav{flex-wrap:wrap}.search{order:3;max-width:none;flex-basis:100%}.hero{padding:45px 25px}.hero-art{font-size:90px;margin-right:0}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.logo{font-size:22px}.logo-rabbit{font-size:42px}.hero-art{display:none}.hero h1{font-size:48px}.categories{grid-template-columns:repeat(2,1fr)}.products{gap:10px}.pic{height:150px}.features{grid-template-columns:1fr}.deal,.news{display:block}.news input{width:100%;margin-top:15px}.footer-in{grid-template-columns:1fr}.wa-float{right:14px;bottom:14px;padding:11px 14px}.wa-float b{display:none}}
+</style>
+</head>
+<body><style>
+.entry-notice{position:fixed;inset:0;background:#0009;display:grid;place-items:center;padding:18px;z-index:200}
+.entry-card{width:min(500px,100%);background:#fff;border-radius:22px;padding:28px;text-align:center;box-shadow:0 20px 60px #0005}
+.entry-icon{font-size:45px;margin-bottom:8px}.entry-card h2{font-size:24px;margin-bottom:10px}.entry-card p{color:#666;line-height:1.75;font-size:14px}
+.entry-close{margin-top:18px;background:#17171e;color:#fff;padding:12px 22px;border-radius:11px;font-weight:800}
+</style>
+<div class="entry-notice" id="entryNotice">
+  <div class="entry-card">
+    <div class="entry-icon">⚠️</div>
+    <h2>গুরুত্বপূর্ণ নোট</h2>
+    <p><b>অর্ডার অপশনে সাময়িক সমস্যা হওয়ায় দয়া করে Desktop Mode অন করুন।</b><br>টেকনিক্যাল সমস্যার জন্য আমরা আন্তরিকভাবে দুঃখিত।</p>
+    <button class="entry-close" onclick="closeEntryNotice()">ঠিক আছে</button>
+  </div>
+</div>
+<script>
+function closeEntryNotice(){document.getElementById('entryNotice').style.display='none'}
+</script>
+
+<div class="top">🚚 সারাদেশে ডেলিভারি • 💳 Cash on Delivery • ✨ নতুন পণ্যে বিশেষ অফার</div>
+<header class="header"><nav class="nav">
+<a class="logo" href="#"><span class="logo-rabbit">🐰</span><span style="color:#fff">Rabit <i style="color:#ff3f8f;font-style:normal">Show</i></span></a>
+<div class="search" id="headerSearch"><input placeholder="Search for products..." oninput="document.getElementById('search').value=this.value;render()"><span>🔎</span></div><div class="menu"><a href="#home">Home</a><a href="#categories">Categories</a><a href="#shop">Shop</a><a href="#deals">Deals</a><a href="#contact">Contact</a></div>
+<div class="actions"><button class="iconbtn" onclick="openAdmin()">⚙️</button><button class="iconbtn" onclick="focusSearch()">🔎</button><button class="iconbtn" onclick="openCart()">🛒<span class="cart-badge" id="count">0</span></button></div>
+</nav></header>
+
+<main id="home">
+<section class="hero"><div>
+<span class="badge">✨ WELCOME TO RABIT SHOW</span>
+<h1>Better Products<br><span>Happier You.</span></h1>
+<p>কসমেটিকস, ইলেকট্রনিকস, ফ্যাশন এবং আরও অনেক কিছু—সবকিছু একসাথে। সহজে অর্ডার করুন, ঘরে বসে পণ্য নিন।</p>
+<a class="btn" href="#shop">Shop Now →</a>
+</div><div class="hero-art">🐰</div></section>
+
+<section class="section" id="categories"><div class="head"><h2>Shop by Category</h2><span class="muted">Explore collections</span></div>
+<div class="categories"><a class="cat" href="#shop" onclick="setCat('Cosmetics')"><div>💄</div>Cosmetics</a><a class="cat" href="#shop" onclick="setCat('Electronics')"><div>📱</div>Electronics</a><a class="cat" href="#shop" onclick="setCat('Fashion')"><div>👕</div>Fashion</a><a class="cat" href="#shop" onclick="setCat('Others')"><div>✨</div>Others</a></div></section>
+
+<section class="section" id="shop"><div class="head"><h2>Featured Products</h2><span class="muted" id="resultText">Showing all products</span></div>
+<div class="toolbar"><div class="search"><span>🔎</span><input id="search" placeholder="পণ্যের নাম খুঁজুন..." oninput="render()"></div><select class="filter" id="filter" onchange="render()"><option>Cosmetics</option><option>Electronics</option><option>Fashion</option><option>Others</option></select></div>
+<div class="products" id="products"></div></section>
+
+<section class="section" id="deals"><div class="deal"><div><span class="badge" style="color:#17171e;background:#fff;border-color:#ddd">🔥 Weekly Deals</span><h2>আজকের Special Offers</h2><p class="muted">নির্বাচিত পণ্যে আকর্ষণীয় মূল্য।</p></div><a class="btn" href="#shop">Explore Deals</a></div></section>
+
+<section class="section"><div class="features"><div class="feature">🚚<b>Fast Delivery</b><span>সারাদেশে ডেলিভারি</span></div><div class="feature">🔒<b>Secure Shopping</b><span>নিরাপদ অর্ডার ব্যবস্থা</span></div><div class="feature">💬<b>Customer Support</b><span>সহজে যোগাযোগ করুন</span></div><div class="feature">↩️<b>Easy Return</b><span>নীতিমালা অনুযায়ী রিটার্ন</span></div></div></section>
+
+<section class="section"><div class="news"><div><h2>Stay Updated ✨</h2><p class="muted">নতুন পণ্য ও অফারের খবর পেতে সাবস্ক্রাইব করুন।</p></div><div><input placeholder="আপনার Email"><button onclick="toast('ধন্যবাদ! সাবস্ক্রাইব সম্পন্ন হয়েছে।')">Subscribe</button></div></div></section>
+</main>
+
+<footer class="footer" id="contact"><div class="footer-in"><div><div class="logo">Rabit <span>Show</span></div><p>আপনার modern online shopping destination.</p></div><div><h3>Quick Links</h3><a href="#home">Home</a><a href="#shop">Shop</a><a href="#categories">Categories</a></div><div><h3>Contact</h3><p>📞 <a href="tel:01601153785">01601153785</a></p><p>💬 <a href="https://wa.me/8801601153785" target="_blank">WhatsApp এ যোগাযোগ</a></p><p>✉️ hello@rabitshow.com</p><p>📍 Bangladesh</p></div></div><div class="copy">© 2026 Rabit Show. All rights reserved.</div></footer>
+
+<div class="modal" id="adminModal"><div class="modalbox">
+<button class="close" onclick="closeAdmin()">×</button>
+<h2>⚙️ Product Admin</h2>
+<p class="muted" style="margin-bottom:12px">এখান থেকে তোমার ওয়েবসাইটে নতুন পণ্য যোগ করতে পারবে।</p>
+<input id="adminName" placeholder="পণ্যের নাম">
+<select class="filter" id="adminCat" style="width:100%;margin:7px 0">
+<option>Cosmetics</option><option>Electronics</option><option>Fashion</option><option>Others</option>
+</select>
+<input id="adminPrice" type="number" placeholder="বিক্রয় মূল্য (৳)">
+<input id="adminOld" type="number" placeholder="আগের মূল্য (ঐচ্ছিক)">
+<input id="adminIcon" placeholder="পণ্যের Emoji (যেমন 🧴 বা 📱)">
+<button class="full" onclick="addProduct()">+ Add Product</button>
+<div style="margin-top:18px"><b>বর্তমান পণ্য</b><div id="adminList" style="margin-top:8px"></div></div>
+</div></div>
+<div class="toast" id="toast"></div>
+<div class="modal" id="cartModal"><div class="modalbox"><button class="close" onclick="closeCart()">×</button><h2>🛒 Your Cart</h2><div id="cartItems" class="muted">আপনার কার্ট খালি।</div><button class="full" onclick="checkout()">Checkout</button></div></div>
+<div class="modal" id="orderModal"><div class="modalbox">
+<button class="close" onclick="closeOrder()">×</button>
+<h2>📦 Checkout</h2>
+<input id="name" placeholder="আপনার নাম">
+<input id="phone" placeholder="মোবাইল নম্বর">
+<textarea id="address" rows="3" placeholder="ডেলিভারি ঠিকানা"></textarea>
+<div style="margin:12px 0 6px;font-weight:800">Delivery Area</div>
+<select class="filter" id="deliveryArea" onchange="updateDeliveryFee()" style="width:100%">
+<option value="dhaka">ঢাকার মধ্যে — ৳100</option>
+<option value="outside">ঢাকার বাইরে — ৳150</option>
+</select>
+<div id="deliveryFee" style="font-size:12px;color:#777b88;background:#f7f7fa;padding:10px;border-radius:9px;margin:10px 0">
+Delivery charge: ৳100
+</div>
+
+<div id="orderSummary" style="background:#f7f7fa;border-radius:12px;padding:13px;margin:12px 0;font-size:13px"></div>
+<div style="margin:12px 0 6px;font-weight:800">Payment Method</div>
+<div style="display:grid;gap:8px">
+<label style="display:flex;align-items:center;gap:9px;padding:12px;border:1px solid #e8e9ef;border-radius:10px;cursor:pointer">
+<input type="radio" name="payment" value="bkash" checked> 💗 <b>bKash</b> — 01601153785
+</label>
+<label style="display:flex;align-items:center;gap:9px;padding:12px;border:1px solid #e8e9ef;border-radius:10px;cursor:pointer">
+<input type="radio" name="payment" value="nagad"> 🟠 <b>Nagad</b> — 01964153795
+</label>
+<label style="display:flex;align-items:center;gap:9px;padding:12px;border:1px solid #e8e9ef;border-radius:10px;cursor:pointer">
+<input type="radio" name="payment" value="cod"> 🚚 <b>Cash on Delivery</b>
+</label>
+</div>
+<div id="paymentNote" style="font-size:12px;color:#777b88;background:#f7f7fa;padding:10px;border-radius:9px;margin:10px 0">
+bKash নম্বরে পেমেন্ট করে Transaction ID অর্ডারের নোটে দেওয়ার ব্যবস্থা পরে যুক্ত করা যাবে।
+</div>
+<input id="trx" placeholder="Transaction ID (bKash/Nagad হলে)" style="display:block;margin-top:8px">
+<button class="full" onclick="placeOrder()">Confirm Order</button>
+</div></div>
+
+<script>
+let products=[];
+try{products=JSON.parse(localStorage.getItem('rabitProducts')||'[]');if(!Array.isArray(products))products=[]}catch(e){products=[]}
+let cart=[];
+function openAdmin(){document.getElementById('adminModal').classList.add('open');renderAdminList()}
+function closeAdmin(){document.getElementById('adminModal').classList.remove('open')}
+function saveProducts(){localStorage.setItem('rabitProducts',JSON.stringify(products))}
+function addProduct(){
+ const name=document.getElementById('adminName').value.trim(), price=Number(document.getElementById('adminPrice').value), old=Number(document.getElementById('adminOld').value)||price, icon=document.getElementById('adminIcon').value.trim()||'🛍️', cat=document.getElementById('adminCat').value;
+ if(!name||!price){toast('পণ্যের নাম ও মূল্য দিন');return}
+ products.push({id:Date.now(),cat,name,price,old,icon,rating:'⭐ New'});
+ saveProducts(); document.getElementById('adminName').value='';document.getElementById('adminPrice').value='';document.getElementById('adminOld').value='';document.getElementById('adminIcon').value='';
+ render();renderAdminList();toast('✓ পণ্য যোগ হয়েছে')
+}
+function deleteProduct(id){products=products.filter(p=>p.id!==id);saveProducts();render();renderAdminList();toast('পণ্য মুছে ফেলা হয়েছে')}
+function renderAdminList(){
+ const el=document.getElementById('adminList');
+ el.innerHTML=products.length?products.map(p=>`<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #eee"><span>${p.icon} ${p.name} — ৳${p.price}</span><button onclick="deleteProduct(${p.id})" style="background:#fee;color:#b00;padding:7px 9px;border-radius:8px">Delete</button></div>`).join(''):'<span class="muted">কোনো পণ্য নেই</span>';
+}
+function render(){
+ const q=(document.getElementById('search')?.value||'').toLowerCase();
+ const c=document.getElementById('filter')?.value||'All';
+ const list=products.filter(p=>(c==='All'||p.cat===c)&&p.name.toLowerCase().includes(q));
+ const box=document.getElementById('products');
+ if(!list.length){
+   box.innerHTML='<div style="grid-column:1/-1;background:#fff;border:1px dashed #ccc;border-radius:18px;padding:35px;text-align:center;color:#777">এখনও কোনো পণ্য যোগ করা হয়নি। ⚙️ Admin থেকে পণ্য যোগ করুন।</div>';
+ }else{
+   box.innerHTML=list.map(p=>`<article class="card"><button class="fav" onclick="toast('Wishlist feature ready ❤️')">♡</button><div class="pic">${p.icon}</div><div class="info"><div class="tag">${p.cat.toUpperCase()}</div><div class="name">${p.name}</div><div class="rating">${p.rating||'⭐ New'}</div><div class="price">৳ ${Number(p.price).toLocaleString()} <span class="old">৳ ${Number(p.old||p.price).toLocaleString()}</span></div><button class="add" onclick="add(${p.id})">Add to Cart</button></div></article>`).join('');
+ }
+ document.getElementById('resultText').textContent=list.length+'টি পণ্য পাওয়া গেছে';
+}
+
+function add(id){const p=products.find(x=>x.id===id);cart.push(p);document.getElementById('count').textContent=cart.length;toast('✓ '+p.name+' কার্টে যোগ হয়েছে');}
+function setCat(c){document.getElementById('filter').value=c}
+function focusSearch(){document.getElementById('search').focus();document.getElementById('shop').scrollIntoView()}
+function toast(t){const x=document.getElementById('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),1800)}
+function openCart(){document.getElementById('cartItems').innerHTML=cart.length?cart.map((p,i)=>`<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #eee"><span>${p.icon} ${p.name}</span><b>৳ ${p.price}</b></div>`).join('')+'<p style="margin-top:14px;color:#191a22"><b>Total: ৳ '+cart.reduce((s,p)=>s+p.price,0).toLocaleString()+'</b></p>':'আপনার কার্ট খালি।';document.getElementById('cartModal').classList.add('open')}
+function closeCart(){document.getElementById('cartModal').classList.remove('open')}
+function checkout(){
+ if(!cart.length){toast('আগে একটি পণ্য কার্টে যোগ করুন');return}
+ closeCart();
+ updateOrderSummary();
+ document.getElementById('orderModal').classList.add('open');
+}
+function closeOrder(){document.getElementById('orderModal').classList.remove('open')}
+document.querySelectorAll('input[name="payment"]').forEach(r=>r.addEventListener('change',()=>{
+ const v=document.querySelector('input[name="payment"]:checked').value;
+ const trx=document.getElementById('trx'), note=document.getElementById('paymentNote');
+ if(v==='cod'){trx.style.display='none';note.textContent='পণ্য হাতে পাওয়ার সময় ডেলিভারি ম্যানকে টাকা পরিশোধ করুন।'}
+ else {trx.style.display='block';note.textContent=v==='bkash'?'bKash Personal: 01601153785 — পেমেন্ট সম্পন্ন করে Transaction ID দিন।':'Nagad Personal: 01964153795 — পেমেন্ট সম্পন্ন করে Transaction ID দিন.'}
+}));
+function updateOrderSummary(){
+ const subtotal=cart.reduce((s,p)=>s+p.price,0);
+ const fee=document.getElementById('deliveryArea')?.value==='outside'?150:100;
+ document.getElementById('orderSummary').innerHTML=
+   '<b>Order Summary</b><br>'+cart.map(p=>p.icon+' '+p.name+' — ৳'+p.price.toLocaleString()).join('<br>')+
+   '<hr style="border:0;border-top:1px solid #ddd;margin:9px 0">'+
+   'Subtotal: ৳'+subtotal.toLocaleString()+'<br>Delivery: ৳'+fee.toLocaleString()+
+   '<br><b>Total: ৳'+(subtotal+fee).toLocaleString()+'</b>';
+}
+function updateDeliveryFee(){
+ const area=document.getElementById('deliveryArea').value;
+ document.getElementById('deliveryFee').textContent='Delivery charge: ৳'+(area==='dhaka'?100:150);
+ if(document.getElementById('orderSummary')) updateOrderSummary();
+}
+updateDeliveryFee();
+const initialPayment=document.querySelector('input[name="payment"]:checked'); if(initialPayment) initialPayment.dispatchEvent(new Event('change'));
+function placeOrder(){
+  const name=document.getElementById('name').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  const address=document.getElementById('address').value.trim();
+  const method=document.querySelector('input[name="payment"]:checked').value;
+  const trx=document.getElementById('trx').value.trim();
+  if(!name||!phone||!address){toast('নাম, মোবাইল ও ঠিকানা পূরণ করুন');return}
+  if(!/^01\d{9}$/.test(phone)){toast('সঠিক ১১ সংখ্যার মোবাইল নম্বর দিন');return}
+  if(method!=='cod'&&!trx){toast('Transaction ID দিন');return}
+
+  const subtotal=cart.reduce((s,p)=>s+p.price,0);
+  const fee=document.getElementById('deliveryArea').value==='outside'?150:100;
+  const total=subtotal+fee;
+  const orderId='RS-'+Date.now().toString().slice(-6);
+
+  const areaText=document.getElementById('deliveryArea').value==='outside'?'ঢাকার বাইরে':'ঢাকার মধ্যে';
+  const paymentText=method==='bkash'?'bKash':method==='nagad'?'Nagad':'Cash on Delivery';
+  const items=cart.map((p,i)=>`${i+1}. ${p.name} — ৳${Number(p.price).toLocaleString()}`).join('\n');
+
+  const message=`🛍️ *Rabit Show — New Order*
+Order ID: ${orderId}
+
+👤 *Customer:* ${name}
+📞 *Phone:* ${phone}
+📍 *Address:* ${address}
+🚚 *Delivery:* ${areaText}
+
+📦 *Products:*
+${items}
+
+💰 *Subtotal:* ৳${subtotal.toLocaleString()}
+🚚 *Delivery Charge:* ৳${fee.toLocaleString()}
+💵 *Total:* ৳${total.toLocaleString()}
+
+💳 *Payment:* ${paymentText}${method!=='cod'?`\n🧾 *Transaction ID:* ${trx}`:''}`;
+
+  const whatsappUrl='https://wa.me/8801601153785?text='+encodeURIComponent(message);
+  window.open(whatsappUrl,'_blank');
+
+  closeOrder();
+  document.getElementById('orderModal').querySelectorAll('input,textarea').forEach(x=>{if(x.type!=='radio')x.value=''});
+  cart=[];
+  document.getElementById('count').textContent=0;
+  toast('🎉 Order তৈরি হয়েছে — WhatsApp খুলছে...');
+}
+render();
+</script>
+
+<a class="wa-float" href="https://wa.me/8801601153785" target="_blank" rel="noopener" aria-label="WhatsApp এ যোগাযোগ">
+  <span>💬</span><b>WhatsApp</b>
+</a>
+<style>
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:80;display:flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 16px;border-radius:30px;box-shadow:0 8px 24px #0003;font-weight:800;font-size:13px;transition:.2s}
+.wa-float:hover{transform:translateY(-3px);box-shadow:0 12px 28px #0004}
+.wa-float span{font-size:22px}.wa-float b{font-weight:800}
+@media(max-width:520px){.wa-float{right:14px;bottom:14px;padding:11px 14px}.wa-float b{display:none}.wa-float span{font-size:24px}}
+</style>
+</body></html>
